@@ -1,0 +1,39 @@
+<html>
+<head>
+    <body>
+        <div id="result_name">
+            <a href="#" class="list-group-item">music</a>;
+            <a href="#" class="list-group-item">flowers</a>;
+        </div>
+        <video id="result_video" width= "320" height="240" controls>
+                    <!-- <source src="movie.mp4" type="video/mp4"> -->
+        </video>
+    </body>
+</head>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+<script>
+    $("#result_name").on("click", ".list-group-item", function(){
+        $("#result_video").empty();
+        // $("#result_img").empty();
+        var content = $(this).text();
+        var result_video_path = ['./musicvideoVid.mp4','./flowersVid.mp4'];
+        // var result_img_path = {{result['result_img_path']|tojson}}
+        // console.log(result_video_path.length);
+        console.log(content + " execute");
+        var i
+        for(i=0; i < result_video_path.length; i++){
+            if(result_video_path[i].indexOf(content) != -1){
+                var video_html = "<source src=" + "'" + result_video_path[i] + "'" + "type='video/mp4'>";
+                // var img_html = "<img src=" + "'" + result_img_path[i] + "'" + " width = '320' height='100' " + ">";
+                $("#result_video").html(video_html);
+                // $("#result_img").html(img_html);
+                break;
+            }
+        }
+    });
+</script>
